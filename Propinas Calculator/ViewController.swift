@@ -8,13 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    var porcentajes:[Int] = []
+    @IBOutlet weak var montoFactxt: UITextField!
+    @IBOutlet weak var picker_propinas: UIPickerView!
+    @IBOutlet weak var propinacalculada_Lbl: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        porcentajes = [5,10,15,20,25,30]
+        picker_propinas.delegate = self
+        picker_propinas.dataSource = self
     }
 
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return porcentajes.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(porcentajes[row])"
+    }
+    
+    
 }
 
