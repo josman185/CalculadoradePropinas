@@ -39,7 +39,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if let montoFactura = montoFactxt?.text! {
             if let montoFacturaDouble = Double(montoFactura) {
                 print("\(String(describing: montoFacturaDouble))")
-                //let porcenProp = picker_propinas.selectedRow(inComponent: 0)
                 let porcenProp = Double(porcentajes[picker_propinas.selectedRow(inComponent: 0)])
                 print(porcenProp)
                 let valorProp = Double(porcenProp / 100)
@@ -52,7 +51,5 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
         }
     }
-    
-    
 
 }
