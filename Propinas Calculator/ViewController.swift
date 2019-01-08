@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var montoFactxt: UITextField!
     @IBOutlet weak var picker_propinas: UIPickerView!
     @IBOutlet weak var propinacalculada_Lbl: UILabel!
-    
+    @IBOutlet weak var totalPagar_lbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return "\(porcentajes[row])"
     }
     
+    @IBAction func btnCalcular(_ sender: Any) {
+        if let montoFactura = montoFactxt?.text! {
+            if let montoFacturaDouble = Double(montoFactura) {
+                print("\(String(describing: montoFacturaDouble))")
+                //let porcenProp = picker_propinas.selectedRow(inComponent: 0)
+                let porcenProp = Double(porcentajes[picker_propinas.selectedRow(inComponent: 0)])
+                print(porcenProp)
+                let valorProp = Double(porcenProp / 100)
+                print("Valor propina: \(valorProp)")
+                let propinaFinal = (montoFacturaDouble * valorProp)
+                propinacalculada_Lbl.text = "\(propinaFinal)"
+                totalPagar_lbl.text = "\(montoFacturaDouble + propinaFinal)"
+            }  else {
+                print("por favor ingrese un monto valido")
+            }
+        }
+    }
     
-}
+    
 
+}
